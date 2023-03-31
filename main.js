@@ -1,14 +1,37 @@
-let editprof = document.querySelector('#editProf');
-let editform = document.forms.editForm;
-let elements = editform.elements;
-let userName = document.querySelector('.user__name');
+let Btn = document.querySelector('#button');
+let input = document.querySelector('#input');
+let list = document.querySelector('.list');
 
-editprof.addEventListener('click', () => {
-    editform.classList.add('active');
+let htmlLs;
+
+if(localStorage.getItem('htmlLs')){
+    list.innerHTML = localStorage.getItem('htmlLs');
+}
+
+Btn.addEventListener('click', () =>{
+    let elem = document.createElement('li');
+    elem.textContent = input.value;
+    list.append(elem);
+    input.value = ""; // очщение инпута
+    localStorage.setItem('htmlLs', list.innerHTML);
 })
 
-elements.saveBtn.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    userName.textContent = elements.userName.value;
-    editform.classList.remove('active');
-})
+
+
+
+
+
+
+// localStorage.setItem('ключ', 'значение')
+
+//localStorage.setItem('name', 'Владимир');
+
+// localStorage.getItem('ключ')
+
+//let nameLS = localStorage.getItem('name');
+
+// localStorage.removeItem("Ключ")
+
+//localStorage.removeItem('name');
+
+// localStorage.clear()
